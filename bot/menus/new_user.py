@@ -18,7 +18,7 @@ config = get_config()
 
 async def handle_new_user_msg(message: types.Message):
     if message.from_user.language_code in get_config().telegram.languages:
-        language = Language(message.from_user.language)
+        language = Language(message.from_user.language_code)
 
     else:
         language = Language(get_config().telegram.languages[0])
