@@ -1,0 +1,6 @@
+beanie
+motor
+apscheduler
+aiogram
+aiohttp
+aiohttp

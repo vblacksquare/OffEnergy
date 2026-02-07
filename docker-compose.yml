@@ -1,0 +1,13 @@
+services:
+  offenergy:
+    container_name: offenergy
+    build: .
+    restart: always
+    tty: true
+    stdin_open: true
+    command: python main.py
+    volumes:
+      - offenergy:/app
+
+volumes:
+  offenergy:

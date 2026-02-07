@@ -1,0 +1,213 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: general
+msgid "click_me_bt"
+msgstr "👉 нажми на меня 👈"
+
+msgid "transition_msg"
+msgstr "Нажми на <b>кнопку ниже</b>, чтобы продолжить"
+
+msgid "back_bt"
+msgstr "назад ⬅️"
+
+msgid "back_left_bt"
+msgstr "⬅️ назад"
+
+msgid "skip_bt"
+msgstr "продолжить ➡️"
+
+msgid "suicide_bt"
+msgstr "🗑"
+
+msgid "wrong"
+msgstr "❌"
+
+msgid "right"
+msgstr "✅"
+
+msgid "pin"
+msgstr "📌"
+
+msgid "accept_bt"
+msgstr "Я согласен 👍"
+
+msgid "try_again_bt"
+msgstr "Попробовать снова 🔄"
+
+msgid "left_bt"
+msgstr "⬅️"
+
+msgid "right_bt"
+msgstr "➡️"
+
+msgid "update_bt"
+msgstr "🔄"
+
+msgid "buy_bt"
+msgstr "Купить 💳"
+
+#: main
+msgid "start_msg"
+msgstr "<b>Графики отключений 😡</b>"
+"\nГород: <code>{city}</code>"
+"\nОчередь: <code>{queue}</code>"
+"\n\n<i>Оповещения регулярно будут тебе приходить</i>"
+
+msgid "language_bt"
+msgstr "Язык 🌐"
+
+msgid "groups_bt"
+msgstr "Групы"
+
+msgid "homeworks_bt"
+msgstr "Домашки"
+
+
+#: info
+msgid "info_msg"
+msgstr "<b>Информация 📋</b>"
+
+#: language
+msgid "language_msg"
+msgstr "Выберите ваш язык"
+
+msgid "en"
+msgstr "English 🇺🇸"
+
+msgid "uk"
+msgstr "Українська 🇺🇦"
+
+msgid "ru"
+msgstr "Русский"
+
+#: welcome
+msgid "welcome_msg"
+msgstr "Привет, это бот который будет присылать тебе <b>актуальные графики отключения света</b> ⚡️"
+
+#: cities
+msgid "kyiv"
+msgstr "Киев"
+
+msgid "kharkiv"
+msgstr "Харьков"
+
+msgid "odesa"
+msgstr "Одесса"
+
+msgid "dnipro"
+msgstr "Днепр"
+
+msgid "lviv"
+msgstr "Львов"
+
+msgid "zaporizhzhia"
+msgstr "Запорожье"
+
+msgid "mykolaiv"
+msgstr "Николаев"
+
+msgid "kryvyi_rih"
+msgstr "Кривой Рог"
+
+msgid "chernihiv"
+msgstr "Чернигов"
+
+msgid "chernivtsi"
+msgstr "Черновцы"
+
+msgid "poltava"
+msgstr "Полтава"
+
+msgid "kherson"
+msgstr "Херсон"
+
+msgid "sumy"
+msgstr "Сумы"
+
+msgid "ternopil"
+msgstr "Тернополь"
+
+msgid "ivano_frankivsk"
+msgstr "Ивано-Франковск"
+
+msgid "lutsk"
+msgstr "Луцк"
+
+msgid "rivne"
+msgstr "Ровно"
+
+msgid "uzhhorod"
+msgstr "Ужгород"
+
+msgid "vinnytsia"
+msgstr "Винница"
+
+msgid "zhytomyr"
+msgstr "Житомир"
+
+msgid "city_msg"
+msgstr "Выбери город в котором живешь"
+"\n\n<i>Сейчас выбран: <b>{city}</b></i>"
+
+msgid "no_city"
+msgstr "нет"
+
+msgid "queue_msg"
+msgstr "Выбери свою очередь"
+"\n\n<i>Сейчас выбрана: <b>{queue}</b></i>"
+
+msgid "no_queue"
+msgstr "нет"
+
+msgid "city_bt"
+msgstr "Город 🏙"
+
+msgid "queue_bt"
+msgstr "Очередь 📌"
+
+msgid "turn_on_nots"
+msgstr "Включить оповещения 🔉"
+
+msgid "turn_off_nots"
+msgstr "Выключить оповещения 🔇"
+
+msgid "yesterday"
+msgstr "Вчера"
+
+msgid "today"
+msgstr "Сегодня"
+
+msgid "tomorrow"
+msgstr "Завтра"
+
+msgid "schedule_msg"
+msgstr "<b>График - {day}</b>"
+"\nГород: <code>{city}</code>"
+"\nОчередь: <code>{queue}</code>"
+"\n{schedule}"
+
+msgid "no_schedule"
+msgstr "Графика пока нет 😢"
+
+msgid "schedule_bt"
+msgstr "График 📆"
+
+msgid "row"
+msgstr "\n{start_at} - {end_at}: {status}"
+
+msgid "current_row"
+msgstr "\n<b>{start_at} - {end_at}: {status}</b>"
+
+msgid "on"
+msgstr "🟢"
+
+msgid "off"
+msgstr "🔴"
+
+msgid "probably"
+msgstr "🟡"
+
+msgid "emergency"
+msgstr "⚠️"
