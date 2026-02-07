@@ -51,7 +51,7 @@ async def get_start(user: User) -> tuple[InlineKeyboardBuilder, str]:
             callback_data=CallbackFactory(action="schedule").pack()
         ),
         InlineKeyboardButton(
-            text=_("turn_off_nots" if user.is_nots else "turn_on_nots"),
+            text=_("turn_on_nots" if user.is_nots else "turn_off_nots"),
             callback_data=CallbackFactory(action="turn_nots").pack()
         )
     )

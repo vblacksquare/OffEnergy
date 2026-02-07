@@ -168,10 +168,10 @@ msgid "queue_bt"
 msgstr "Очередь 📌"
 
 msgid "turn_on_nots"
-msgstr "Включить оповещения 🔉"
+msgstr "Оповещения 🔉"
 
 msgid "turn_off_nots"
-msgstr "Выключить оповещения 🔇"
+msgstr "Оповещения 🔇"
 
 msgid "yesterday"
 msgstr "Вчера"

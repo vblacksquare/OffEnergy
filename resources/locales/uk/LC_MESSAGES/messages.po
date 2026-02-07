@@ -166,10 +166,10 @@ msgid "queue_bt"
 msgstr "Черга 📌"
 
 msgid "turn_on_nots"
-msgstr "Увімкнути сповіщення 🔉"
+msgstr "Cповіщення 🔉"
 
 msgid "turn_off_nots"
-msgstr "Вимкнути сповіщення 🔇"
+msgstr "Cповіщення 🔇"
 
 msgid "yesterday"
 msgstr "Вчора"
