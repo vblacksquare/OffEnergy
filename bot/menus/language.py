@@ -92,7 +92,7 @@ async def hange_language_change(callback: CallbackQuery, callback_data: Callback
     action, language = callback_data.value.split("|")
     language = Language(language)
 
-    i18n.ctx_locale.set(language)
+    i18n.ctx_locale.set(language.value)
     user = await User.find_one(User.telegram_id == callback.from_user.id)
 
     if user.language == language:
