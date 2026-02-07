@@ -14,7 +14,6 @@ from config import get_config
 
 bot = Bot(token=get_config().telegram.bot_token)
 
-os.system(f"pybabel compile -d {get_config().resources.locales_path} -D messages")
 i18n = I18n(path=get_config().resources.locales_path, default_locale="ru", domain="messages")
 
 
