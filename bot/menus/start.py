@@ -45,6 +45,17 @@ async def handle_start_query(callback: types.CallbackQuery, state: FSMContext):
 async def get_start(user: User) -> tuple[InlineKeyboardBuilder, str]:
     keyboard = InlineKeyboardBuilder()
     keyboard.row(
+
+        InlineKeyboardButton(
+            text=_("schedule_bt"),
+            callback_data=CallbackFactory(action="schedule").pack()
+        ),
+        InlineKeyboardButton(
+            text=_("turn_off_nots" if user.is_nots else "turn_on_nots"),
+            callback_data=CallbackFactory(action="turn_nots").pack()
+        )
+    )
+    keyboard.row(
         InlineKeyboardButton(
             text=_("city_bt"),
             callback_data=CallbackFactory(action="city").pack()
@@ -52,18 +63,6 @@ async def get_start(user: User) -> tuple[InlineKeyboardBuilder, str]:
         InlineKeyboardButton(
             text=_("queue_bt"),
             callback_data=CallbackFactory(action="queue").pack()
-        )
-    )
-    keyboard.row(
-        InlineKeyboardButton(
-            text=_("schedule_bt"),
-            callback_data=CallbackFactory(action="schedule").pack()
-        )
-    )
-    keyboard.row(
-        InlineKeyboardButton(
-            text=_("turn_off_nots" if user.is_nots else "turn_on_nots"),
-            callback_data=CallbackFactory(action="turn_nots").pack()
         )
     )
     keyboard.row(
