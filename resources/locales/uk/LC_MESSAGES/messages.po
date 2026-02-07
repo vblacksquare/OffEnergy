@@ -193,10 +193,10 @@ msgid "schedule_bt"
 msgstr "Графік 📆"
 
 msgid "row"
-msgstr "\n{start_at} - {end_at}: {status}"
+msgstr "{start_at} - {end_at}: {status}"
 
 msgid "current_row"
-msgstr "\n<b>{start_at} - {end_at}: {status}</b>"
+msgstr "<b>{start_at} - {end_at}: {status}</b>"
 
 msgid "on"
 msgstr "🟢"

@@ -186,7 +186,7 @@ msgid "schedule_msg"
 msgstr "<b>График - {day}</b>"
 "\nГород: <code>{city}</code>"
 "\nОчередь: <code>{queue}</code>"
-"\n{schedule}"
+"\n\n{schedule}"
 
 msgid "no_schedule"
 msgstr "Графика пока нет 😢"
@@ -195,10 +195,10 @@ msgid "schedule_bt"
 msgstr "График 📆"
 
 msgid "row"
-msgstr "\n{start_at} - {end_at}: {status}"
+msgstr "{start_at} - {end_at}: {status}"
 
 msgid "current_row"
-msgstr "\n<b>{start_at} - {end_at}: {status}</b>"
+msgstr "<b>{start_at} - {end_at}: {status}</b>"
 
 msgid "on"
 msgstr "🟢"

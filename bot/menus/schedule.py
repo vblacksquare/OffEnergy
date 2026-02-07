@@ -110,7 +110,7 @@ async def get_schedule(user: User, value: str = None) -> tuple[InlineKeyboardBui
                 )
             )
 
-        schedule = ''.join(parts)
+        schedule = '\n'.join(parts)
 
     else:
         schedule = _("no_schedule")
