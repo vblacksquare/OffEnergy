@@ -4,3 +4,4 @@ apscheduler
 aiogram
 aiohttp
 aiohttp
+loguru
