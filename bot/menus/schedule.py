@@ -73,8 +73,8 @@ async def get_schedule(user: User, value: str = None) -> tuple[InlineKeyboardBui
         )
     )
 
-    now = datetime.now(ZoneInfo("Europe/Kyiv"))
-    start = (now + timedelta(days=value)).replace(hour=0, minute=0, second=0, microsecond=0)
+    now = datetime.now(ZoneInfo("Europe/Kyiv")) + timedelta(days=value)
+    start = now.replace(hour=0, minute=0, second=0, microsecond=0)
     end = start.replace(hour=23, minute=59, second=59, microsecond=0)
 
     docs = await Schedule.find(
