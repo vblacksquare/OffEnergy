@@ -46,18 +46,18 @@ async def get_start(user: User) -> tuple[InlineKeyboardBuilder, str]:
     keyboard = InlineKeyboardBuilder()
     keyboard.row(
         InlineKeyboardButton(
-            text=_("schedule_bt"),
-            callback_data=CallbackFactory(action="schedule").pack()
-        )
-    )
-    keyboard.row(
-        InlineKeyboardButton(
             text=_("city_bt"),
             callback_data=CallbackFactory(action="city").pack()
         ),
         InlineKeyboardButton(
             text=_("queue_bt"),
             callback_data=CallbackFactory(action="queue").pack()
+        )
+    )
+    keyboard.row(
+        InlineKeyboardButton(
+            text=_("schedule_bt"),
+            callback_data=CallbackFactory(action="schedule").pack()
         )
     )
     keyboard.row(
