@@ -1,5 +1,7 @@
 
+from typing import Optional
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
 from aiogram import Router, F
 from aiogram.filters import Command
@@ -71,7 +73,7 @@ async def get_schedule(user: User, value: str = None) -> tuple[InlineKeyboardBui
         )
     )
 
-    now = datetime.now()
+    now = datetime.now(ZoneInfo("Europe/Kyiv"))
     start = (now + timedelta(days=value)).replace(hour=0, minute=0, second=0, microsecond=0)
     end = start.replace(hour=23, minute=59, second=59, microsecond=0)
 
@@ -83,7 +85,23 @@ async def get_schedule(user: User, value: str = None) -> tuple[InlineKeyboardBui
     ).to_list()
 
     if docs:
-        docs = sorted(docs, key=lambda x: x.start_at)
+        by_time_seria: dict[str, Optional[Schedule]] = {}
+
+        for doc in docs:
+            if doc.time_seria not in by_time_seria:
+                by_time_seria[doc.time_seria] = None
+
+            old_doc = by_time_seria[doc.time_seria]
+            if old_doc is None:
+                by_time_seria[doc.time_seria] = doc
+
+            elif old_doc.created_at < doc.created_at:
+                by_time_seria[doc.time_seria] = doc
+
+        docs = sorted(
+            list(by_time_seria.values()),
+            key=lambda x: x.start_at
+        )
 
         joined = []
         current_doc = docs[0]

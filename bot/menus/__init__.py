@@ -15,8 +15,8 @@ root_router.include_routers(
     start_router,
     language_router,
     city_router,
-    utils_router,
     queue_router,
     nots_router,
-    schedule_router
+    schedule_router,
+    utils_router
 )
