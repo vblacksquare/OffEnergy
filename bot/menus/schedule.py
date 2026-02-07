@@ -73,7 +73,7 @@ async def get_schedule(user: User, value: str = None) -> tuple[InlineKeyboardBui
         )
     )
 
-    now = datetime.now(ZoneInfo("Europe/Kyiv")) + timedelta(days=value)
+    now = datetime.now(ZoneInfo("Europe/Kyiv")).replace(tzinfo=None) + timedelta(days=value)
     start = now.replace(hour=0, minute=0, second=0, microsecond=0)
     end = start.replace(hour=23, minute=59, second=59, microsecond=0)
 
@@ -120,8 +120,14 @@ async def get_schedule(user: User, value: str = None) -> tuple[InlineKeyboardBui
         hours_now = from_hours(now)
 
         for doc in joined:
+            if doc.start_at < hours_now <= doc.end_at:
+                row = "current_row"
+
+            else:
+                row = "row"
+
             parts.append(
-                _("current_row" if doc.start_at <= hours_now <= doc.end_at else "row").format(
+                _(row).format(
                     start_at=to_hours(doc.start_at),
                     end_at=to_hours(doc.end_at),
                     status=_(doc.status.value),

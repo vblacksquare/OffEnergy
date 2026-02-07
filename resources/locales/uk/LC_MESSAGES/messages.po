@@ -184,7 +184,7 @@ msgid "schedule_msg"
 msgstr "<b>Графік - {day}</b>"
 "\nМісто: <code>{city}</code>"
 "\nЧерга: <code>{queue}</code>"
-"\n{schedule}"
+"\n\n{schedule}"
 
 msgid "no_schedule"
 msgstr "Графіка поки що немає 😢"
