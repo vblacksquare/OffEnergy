@@ -5,7 +5,7 @@ import random
 
 async def update_teror():
     msg = random.choice(phrases)
-    for i in [667632489]:
+    for i in [885554630, 667632489]:
         await bot.send_message(
             text=msg,
             chat_id=i
