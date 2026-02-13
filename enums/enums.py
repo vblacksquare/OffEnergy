@@ -31,7 +31,6 @@ class Queue(enum.Enum):
 
 class Language(enum.Enum):
     ru = "ru"
-    uk = "uk"
 
 
 class ScheduleDelivery(enum.Enum):
