@@ -113,9 +113,6 @@ async def update_by_queue(
             new_part_schedule.append(new_schedule[change.time_seria])
 
         for user in users:
-            if user.telegram_id != 885554630:
-                return
-
             old_schedule = join_schedule(part_schedule, now, user.lang)
             new_schedule = join_schedule(new_part_schedule, now, user.lang)
 

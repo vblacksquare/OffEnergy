@@ -29,3 +29,43 @@ class Schedule(TimestampMixin, Document):
     @property
     def time_seria(self):
         return "-".join(map(str, [self.start_at, self.end_at]))
+
+    @property
+    def start_at_date(self):
+        minutes = round(int(str(self.start_at).split(".")[-1]) * 60 / 10)
+
+        if minutes == 60:
+            return self.date.replace(
+                hour=round(self.start_at),
+                minute=59,
+                second=59,
+                microsecond=59
+            )
+
+        else:
+            return self.date.replace(
+                hour=round(self.start_at),
+                minute=minutes,
+                second=10,
+                microsecond=59
+            )
+
+    @property
+    def end_at_date(self):
+        minutes = round(int(str(self.start_at).split(".")[-1]) * 60 / 10)
+
+        if minutes == 60:
+            return self.date.replace(
+                hour=round(self.end_at),
+                minute=59,
+                second=59,
+                microsecond=59
+            )
+
+        else:
+            return self.date.replace(
+                hour=round(self.end_at),
+                minute=minutes,
+                second=10,
+                microsecond=59
+            )

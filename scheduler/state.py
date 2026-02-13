@@ -7,7 +7,7 @@ from bot import bot, i18n
 from enums import City, Queue, ScheduleStatus
 from models import Schedule, Change, User
 
-from utils.convert import to_hours, from_hours, get_joined_schedule
+from utils.convert import to_hours, from_hours, get_joined_schedule, to_time_left, join_schedule
 
 
 async def update_state():
@@ -67,36 +67,117 @@ async def update_by_queue(
         User.queue == queue,
     ).to_list()
 
-    hours_now = from_hours(now - timedelta(minutes=15))
+    hours_now = from_hours(now)
     joined = get_joined_schedule(docs)
 
     current_schedule: Optional[Schedule] = None
     i = 0
 
     for i, doc in enumerate(joined):
-        if doc.start_at < hours_now <= doc.end_at:
+        if doc.start_at <= hours_now <= doc.end_at:
             current_schedule = doc
             break
 
-    if not current_schedule:
-        return
+    if current_schedule is None:
+        current_schedule = joined[-1]
 
     parts = joined[i+1:i+3]
-    if len(parts) == 0:
-        print("хз там следующий график")
 
-    elif len(parts) == 1:
-        print("знаю некст но там следующий график")
-        upcoming_schedule = parts[0]
+    for user in users:
+        msg = None
 
-        if upcoming_schedule.status == ScheduleStatus.on:
-            pass
+        if len(parts) == 0:
+            diff = to_time_left(
+                round(
+                    abs(now.timestamp() - (start + timedelta(days=1)).timestamp()) / 3600, 2
+                ),
+                user.lang
+            )
 
-        elif upcoming_schedule.status == ScheduleStatus.off:
-            pass
+            msg = i18n.gettext("push_change", locale=user.lang).format(
+                start=str(diff),
+                meta=""
+            )
 
-        elif upcoming_schedule.status == ScheduleStatus.probably:
-            pass
+        elif len(parts) == 1:
+            upcoming_schedule = parts[0]
 
-    elif len(parts) == 2:
-        print("знаю некст+некст")
+            diff = to_time_left(
+                round(
+                    abs(now.timestamp() - upcoming_schedule.start_at_date.timestamp()) / 3600, 2
+                ),
+                user.lang
+            )
+
+            if upcoming_schedule.status == ScheduleStatus.on:
+                msg = i18n.gettext("push_on", locale=user.lang).format(
+                    start=str(diff),
+                    meta=i18n.gettext("next_timetable", locale=user.lang)
+                )
+
+            elif upcoming_schedule.status == ScheduleStatus.off:
+                msg = i18n.gettext("push_off", locale=user.lang).format(
+                    start=str(diff),
+                    meta=i18n.gettext("next_timetable", locale=user.lang)
+                )
+
+            elif upcoming_schedule.status == ScheduleStatus.probably:
+                status = "on" if current_schedule.status == ScheduleStatus.off else "off"
+
+                msg = i18n.gettext(f"push_probably_{status}").format(
+                    start=str(diff),
+                    meta=i18n.gettext("next_timetable", locale=user.lang)
+                )
+
+        elif len(parts) == 2:
+            upcoming_schedule = parts[0]
+            next_schedule = parts[1]
+
+            diff = to_time_left(
+                round(
+                    abs(now.timestamp() - upcoming_schedule.start_at_date.timestamp()) / 3600, 2
+                ),
+                user.lang
+            )
+            diff1 = to_time_left(
+                round(
+                    abs(now.timestamp() - next_schedule.start_at_date.timestamp()) / 3600, 2
+                ),
+                user.lang
+            )
+
+            if upcoming_schedule.status == ScheduleStatus.on:
+                msg = i18n.gettext("push_on", locale=user.lang).format(
+                    start=str(diff),
+                    meta=""
+                )
+
+            elif upcoming_schedule.status == ScheduleStatus.off:
+                msg = i18n.gettext("push_off", locale=user.lang).format(
+                    start=str(diff),
+                    meta=""
+                )
+
+            elif upcoming_schedule.status == ScheduleStatus.probably:
+                if next_schedule.status == ScheduleStatus.on:
+                    msg = i18n.gettext("push_combined_on", locale=user.lang).format(
+                        start=str(diff),
+                        end=str(diff1),
+                        meta=""
+                    )
+
+                elif next_schedule.status == ScheduleStatus.off:
+                    msg = i18n.gettext("push_combined_off", locale=user.lang).format(
+                        start=str(diff),
+                        end=str(diff1),
+                        meta=""
+                    )
+
+        if msg is None:
+            continue
+
+        await bot.send_message(
+            text=msg,
+            parse_mode="HTML",
+            chat_id=user.telegram_id
+        )

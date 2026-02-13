@@ -92,3 +92,41 @@ def get_joined_schedule(docs: list[Schedule]) -> list[Schedule]:
     joined.append(current_doc)
 
     return joined
+
+
+def to_time_left(hours: float, language: str, only_minutes: bool) -> str:
+    from bot import i18n
+
+    hours, minutes = str(hours).split(".")
+
+    hours = int(hours)
+
+    if len(minutes) == 1:
+        minutes = minutes + "0"
+    minutes = round(int(minutes) * 0.6)
+
+    parts = []
+    if hours and hours > 0:
+        parts.append(
+            i18n.gettext(
+                "hours",
+                "hours_remind",
+                hours,
+                locale=language
+            ) % hours
+        )
+
+    if minutes and minutes > 0:
+        parts.append(
+            i18n.gettext(
+                "minutes",
+                "minutes_remind",
+                minutes,
+                locale=language
+            ) % minutes
+        )
+
+    if not len(parts):
+        return i18n.gettext("now", locale=language)
+
+    return ", ".join(parts)
