@@ -14,7 +14,7 @@ from bot.factory import CallbackFactory
 
 from models import User, Schedule
 
-from utils.convert import to_hours, from_hours
+from utils.convert import join_schedule
 
 
 schedule_router = Router()
@@ -85,56 +85,7 @@ async def get_schedule(user: User, value: str = None) -> tuple[InlineKeyboardBui
     ).to_list()
 
     if docs:
-        by_time_seria: dict[str, Optional[Schedule]] = {}
-
-        for doc in docs:
-            if doc.time_seria not in by_time_seria:
-                by_time_seria[doc.time_seria] = None
-
-            old_doc = by_time_seria[doc.time_seria]
-            if old_doc is None:
-                by_time_seria[doc.time_seria] = doc
-
-            elif old_doc.created_at < doc.created_at:
-                by_time_seria[doc.time_seria] = doc
-
-        docs = sorted(
-            list(by_time_seria.values()),
-            key=lambda x: x.start_at
-        )
-
-        joined = []
-        current_doc = docs[0]
-
-        for doc in docs[1:]:
-            if doc.status == current_doc.status:
-                current_doc.end_at = doc.end_at
-
-            else:
-                joined.append(current_doc)
-                current_doc = doc
-
-        joined.append(current_doc)
-
-        parts = []
-        hours_now = from_hours(now)
-
-        for doc in joined:
-            if doc.start_at < hours_now <= doc.end_at:
-                row = "current_row"
-
-            else:
-                row = "row"
-
-            parts.append(
-                _(row).format(
-                    start_at=to_hours(doc.start_at),
-                    end_at=to_hours(doc.end_at),
-                    status=_(doc.status.value),
-                )
-            )
-
-        schedule = '\n'.join(parts)
+        schedule = join_schedule(docs, now, user.lang)
 
     else:
         schedule = _("no_schedule")

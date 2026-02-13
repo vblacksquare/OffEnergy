@@ -13,3 +13,7 @@ class User(TimestampMixin, Document):
     queue: Optional[Queue] = None
     language: Optional[Language] = None
     is_nots: bool = True
+
+    @property
+    def lang(self) -> str:
+        return self.language.value

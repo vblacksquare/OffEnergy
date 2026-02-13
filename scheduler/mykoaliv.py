@@ -9,7 +9,6 @@ from enums import City
 from parser.mykolaiv import MykolaivParser
 
 
-
 async def update_mykolaiv():
     parser = MykolaivParser()
     schedules = await parser.get_schedule()

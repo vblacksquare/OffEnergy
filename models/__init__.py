@@ -6,6 +6,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 
 from .user import User
 from .schedule import Schedule
+from .change import Change
 
 
 async def setup_database(uri: str, name: str):

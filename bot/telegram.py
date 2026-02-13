@@ -6,7 +6,7 @@ from aiogram import Dispatcher, Bot
 from aiogram.utils.i18n import I18n
 from aiogram.fsm.storage.mongo import MongoStorage
 
-from .i18n import UserLanguageMiddleware
+from .i18n_middleware import UserLanguageMiddleware
 from .middleware import ClearFsmMiddleware, NewUserMiddlewareMsg, NewUserMiddlewareQuery
 
 from config import get_config

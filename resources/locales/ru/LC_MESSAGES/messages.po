@@ -1,6 +1,8 @@
-#
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: general
 msgid "click_me_bt"
@@ -188,6 +190,15 @@ msgstr "<b>График - {day}</b>"
 "\nОчередь: <code>{queue}</code>"
 "\n\n{schedule}"
 
+msgid "update_schedule_msg"
+msgstr "<b>🔄 Обновление графика - {day}</b>"
+"\nГород: <code>{city}</code>"
+"\nОчередь: <code>{queue}</code>"
+"\n\n<u>До обновления</u>"
+"\n<code>{old_schedule}</code>"
+"\n\n<u>После обновления</u>"
+"\n<code>{new_schedule}</code>"
+
 msgid "no_schedule"
 msgstr "Графика пока нет 😢"
 
@@ -198,7 +209,26 @@ msgid "row"
 msgstr "{start_at} - {end_at}: {status}"
 
 msgid "current_row"
-msgstr "<b>{start_at} - {end_at}: {status}</b>"
+msgstr "> {start_at} - {end_at}: {status}"
+
+msgid "notification_off"
+msgstr "🗞 Свет выключат через {diff}"
+
+msgid "notification_on"
+msgstr "🗞 Свет включат через {diff}"
+
+msgid "notification_probably_off"
+msgstr "🗞 Свет выключат через {start_diff}-{end_diff}"
+
+msgid "notification_probably_on"
+msgstr "🗞 Свет включат через {start_diff}-{end_diff}"
+
+
+msgid "через %(count)d минуту"
+msgid_plural "через %(count)d минуты"
+msgstr[0] "через %(count)d минуту"
+msgstr[1] "через %(count)d минуты"
+msgstr[2] "через %(count)d минут"
 
 msgid "on"
 msgstr "🟢"
