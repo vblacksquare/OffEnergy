@@ -94,7 +94,7 @@ def get_joined_schedule(docs: list[Schedule]) -> list[Schedule]:
     return joined
 
 
-def to_time_left(hours: float, language: str, only_minutes: bool) -> str:
+def to_time_left(hours: float, language: str) -> str:
     from bot import i18n
 
     hours, minutes = str(hours).split(".")

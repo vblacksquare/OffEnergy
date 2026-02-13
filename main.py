@@ -18,9 +18,7 @@ async def main():
     await setup_database(config.database.uri, config.database.name)
 
     await run_cheduler()
-    while True:
-        await asyncio.sleep(1)
-    #await run_telegram()
+    await run_telegram()
 
 
 if __name__ == '__main__':
