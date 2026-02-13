@@ -4,10 +4,12 @@ import random
 
 
 async def update_teror():
-    await bot.send_message(
-        text=random.choice(architect_teasing),
-        chat_id=667632489
-    )
+    msg = random.choice(architect_teasing)
+    for i in [8509826947, 667632489]:
+        await bot.send_message(
+            text=msg,
+            chat_id=i
+        )
 
 
 architect_teasing = [
