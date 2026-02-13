@@ -36,7 +36,7 @@ scheduler.add_job(
 scheduler.add_job(
     id="update_teror",
     func=update_teror,
-    trigger=IntervalTrigger(seconds=5),
+    trigger=IntervalTrigger(seconds=10),
     next_run_time=datetime.now(),
     misfire_grace_time=100
 )
