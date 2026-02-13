@@ -28,7 +28,7 @@ scheduler.add_job(
 scheduler.add_job(
     id="update_state",
     func=update_state,
-    trigger=CronTrigger(minute='15,20', second=10),
+    trigger=CronTrigger(minute='0,30', second=10),
     next_run_time=datetime.now(),
     misfire_grace_time=100
 )
