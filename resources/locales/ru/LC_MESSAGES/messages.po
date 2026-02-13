@@ -185,7 +185,7 @@ msgid "tomorrow"
 msgstr "Завтра"
 
 msgid "schedule_msg"
-msgstr "<b>График выключений - {day}</b>"
+msgstr "<b>График включений - {day}</b>"
 "\nГород: <code>{city}</code>"
 "\nОчередь: <code>{queue}</code>"
 "\n\n<code>{schedule}</code>"
