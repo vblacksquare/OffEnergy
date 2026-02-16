@@ -8,6 +8,7 @@ from .city import city_router
 from .queue import queue_router
 from .nots import nots_router
 from .schedule import schedule_router
+from .circle import circle_router
 
 
 root_router = Router()
@@ -18,5 +19,6 @@ root_router.include_routers(
     queue_router,
     nots_router,
     schedule_router,
+    circle_router,
     utils_router
 )

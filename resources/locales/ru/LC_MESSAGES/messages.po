@@ -268,3 +268,12 @@ msgstr "⚠️"
 
 msgid "now"
 msgstr "сейчас"
+
+msgid "info"
+msgstr "ID: <code>{id}</code>"
+
+msgid "full_schedule_bt"
+msgstr "👉 Полный график 👈"
+
+msgid "processing_msg"
+msgstr "Обрабатываю видео..."

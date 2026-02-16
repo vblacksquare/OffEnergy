@@ -1,10 +1,10 @@
 
-import os
 from loguru import logger
 
 from aiogram import Dispatcher, Bot
 from aiogram.utils.i18n import I18n
 from aiogram.fsm.storage.mongo import MongoStorage
+from aiogram.utils.callback_answer import CallbackAnswerMiddleware
 
 from .i18n_middleware import UserLanguageMiddleware
 from .middleware import ClearFsmMiddleware, NewUserMiddlewareMsg, NewUserMiddlewareQuery
@@ -27,6 +27,7 @@ async def run_telegram():
         dp.message.middleware(ClearFsmMiddleware(bot, dp))
         dp.message.middleware(NewUserMiddlewareMsg())
         dp.callback_query.middleware(NewUserMiddlewareQuery())
+        dp.callback_query.middleware(CallbackAnswerMiddleware())
 
         i18n_middleware = UserLanguageMiddleware(i18n)
         i18n_middleware.setup(dp)

@@ -2,12 +2,16 @@ from typing import Optional
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
+from aiogram.types import InlineKeyboardButton
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
 from bot import bot, i18n
+from bot.factory import CallbackFactory
 
 from enums import City, Queue, ScheduleStatus
-from models import Schedule, Change, User
+from models import Schedule, User
 
-from utils.convert import to_hours, from_hours, get_joined_schedule, to_time_left, join_schedule
+from utils.convert import from_hours, get_joined_schedule, to_time_left
 
 
 async def update_state():
@@ -175,6 +179,14 @@ async def update_by_queue(
 
         if msg is None:
             continue
+
+        keyboard = InlineKeyboardBuilder()
+        keyboard.row(
+            InlineKeyboardButton(
+                text=i18n.gettext("full_schedule_bt", locale=user.lang),
+                callback_data=CallbackFactory(action="schedule")
+            )
+        )
 
         await bot.send_message(
             text=msg,

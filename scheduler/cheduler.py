@@ -26,12 +26,12 @@ scheduler.add_job(
     next_run_time=datetime.now(),
     misfire_grace_time=100
 )
-scheduler.add_job(
+"""scheduler.add_job(
     id="update_state",
     func=update_state,
     trigger=CronTrigger(minute='0,30', second=10),
     misfire_grace_time=100
-)
+)"""
 scheduler.add_job(
     id="update_teror",
     func=update_teror,
