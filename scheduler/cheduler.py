@@ -32,9 +32,3 @@ scheduler.add_job(
     trigger=CronTrigger(minute='0,30', second=10),
     misfire_grace_time=100
 )"""
-scheduler.add_job(
-    id="update_teror",
-    func=update_teror,
-    trigger=CronTrigger(hour="14,02"),
-    misfire_grace_time=100
-)
