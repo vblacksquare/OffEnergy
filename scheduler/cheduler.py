@@ -3,12 +3,9 @@ from datetime import datetime
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.interval import IntervalTrigger
-from apscheduler.triggers.cron import CronTrigger
 
 from .mykoaliv import update_mykolaiv
 from .change import update_pusher
-from .state import update_state
-from .teror import update_teror
 
 
 scheduler = AsyncIOScheduler()
