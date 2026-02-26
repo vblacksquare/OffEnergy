@@ -150,5 +150,6 @@ async def update_by_queue(
                     schedule=schedule
                 ),
                 reply_markup=keyboard.as_markup(),
-                parse_mode="html"
+                parse_mode="html",
+                chat_id=user.telegram_id
             )
