@@ -142,8 +142,6 @@ async def update_by_queue(
             )
             schedule = join_schedule(docs, now, user.lang)
 
-            keyboard, msg = await get_schedule(user)
-
             await bot.send_message(
                 text=i18n.gettext("update_schedule_msg", locale=user.lang).format(
                     city=i18n.gettext(user.city.value, locale=user.lang),
