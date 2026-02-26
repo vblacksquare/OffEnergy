@@ -3,10 +3,13 @@ from typing import Optional
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-from bot import bot, i18n
+from aiogram.utils.keyboard import InlineKeyboardBuilder,InlineKeyboardButton
 
+from bot import i18n, bot
 from enums import City, Queue
 from models import Schedule, Change, User
+from bot.menus.schedule import get_schedule
+from bot.factory import CallbackFactory
 
 from utils.convert import join_schedule
 
@@ -116,14 +119,38 @@ async def update_by_queue(
             old_schedule = join_schedule(part_schedule, now, user.lang)
             new_schedule = join_schedule(new_part_schedule, now, user.lang)
 
+            keyboard = InlineKeyboardBuilder()
+            keyboard.row(
+                InlineKeyboardButton(
+                    text=i18n.gettext("yesterday", locale=user.lang),
+                    callback_data=CallbackFactory(action="schedule", value="-1").pack()
+                ),
+                InlineKeyboardButton(
+                    text=i18n.gettext("today", locale=user.lang),
+                    callback_data=CallbackFactory(action="schedule").pack()
+                ),
+                InlineKeyboardButton(
+                    text=i18n.gettext("tomorrow", locale=user.lang),
+                    callback_data=CallbackFactory(action="schedule", value="1").pack()
+                ),
+            )
+            keyboard.row(
+                InlineKeyboardButton(
+                    text=i18n.gettext("back_bt", locale=user.lang),
+                    callback_data=CallbackFactory(action="start").pack()
+                )
+            )
+            schedule = join_schedule(docs, now, user.lang)
+
+            keyboard, msg = await get_schedule(user)
+
             await bot.send_message(
                 text=i18n.gettext("update_schedule_msg", locale=user.lang).format(
                     city=i18n.gettext(user.city.value, locale=user.lang),
                     queue=i18n.gettext(user.queue.value, locale=user.lang),
                     day=end.strftime("%d.%m.%Y"),
-                    old_schedule=old_schedule,
-                    new_schedule=new_schedule,
+                    schedule=schedule
                 ),
-                parse_mode="html",
-                chat_id=user.telegram_id,
+                reply_markup=keyboard.as_markup(),
+                parse_mode="html"
             )
